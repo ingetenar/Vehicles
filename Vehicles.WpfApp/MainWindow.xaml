@@ -6,79 +6,104 @@
         xmlns:local="clr-namespace:Vehicles.WpfApp"
         mc:Ignorable="d"
         Title="Vehicles" Height="450" Width="800">
+	<Window.Background>
+		<SolidColorBrush Color="#F5F7FA"/>
+	</Window.Background>
+
+	<Window.Resources>
+
+		<Style TargetType="Button">
+			<Setter Property="Background" Value="#DDEEFF"/>
+			<Setter Property="BorderBrush" Value="#66A3FF"/>
+			<Setter Property="Padding" Value="8.5"/>
+			<Setter Property="Margin" Value="5"/>
+		</Style>
+
+		<Style TargetType="TextBlock">
+			<Setter Property="FontSize" Value="14"/>
+		</Style>
+
+	</Window.Resources>
+
     <Grid Margin="10">
+
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="200"/>
+            <ColumnDefinition Width="180"/>
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
 
-        <Grid.RowDefinitions>
-            <RowDefinition Height="*"/>
-            <RowDefinition Height="Auto"/>
-        </Grid.RowDefinitions>
+        <StackPanel Grid.Column="0" Margin="5">
 
-        <ListBox x:Name="VehiclesListBox"
-             Grid.Column="0"
-             Margin="5"
-             SelectionChanged="VehiclesListBox_SelectionChanged"/>
+            <ListBox x:Name="VehiclesListBox"
+                 Height="230"
+                 SelectionChanged="VehiclesListBox_SelectionChanged"/>
 
-        <StackPanel Grid.Column="1" Margin="10">
+            <Button x:Name="AddCarButton"
+                Content="Add Car"
+                Width="120"
+                Height="40"
+                Click="AddCarButton_Click"/>
+
+            <Button x:Name="AddBoatButton"
+                Content="Add Boat"
+                Width="120"
+                Height="40"
+                Click="AddBoatButton_Click"/>
+
+            <Button x:Name="AddAmphibiousButton"
+                Content="Add Amphibious"
+                Width="120"
+                Height="40"
+                Click="AddAmphibiousButton_Click"/>
+
+        </StackPanel>
+
+        <StackPanel Grid.Column="1" Margin="15">
 
             <TextBlock Text="Selected vehicle:"
                    FontWeight="Bold"/>
 
             <TextBlock x:Name="VehicleInfoText"
-                   Margin="0,5,0,10"/>
+                   Margin="0,5,0,20"/>
 
-            <TextBlock Text="Distance (km):"/>
+            <StackPanel Orientation="Horizontal"
+                    Margin="0,0,0,15">
 
-            <TextBox x:Name="DistanceTextBox"
-                 Width="100"
-                 Margin="0,5,0,10"/>
+                <TextBlock Text="Distance (km):"
+                       VerticalAlignment="Center"/>
 
-            <WrapPanel Margin="0,5">
+                <TextBox x:Name="DistanceTextBox"
+                     Width="80"
+                     Height="25"
+                     Margin="10,0,0,0"/>
 
-                <Button x:Name="AddCarButton"
-                    Content="Add Car"
-                    Width="90"
-                    Margin="5"
-                    Click="AddCarButton_Click"/>
+            </StackPanel>
 
-                <Button x:Name="AddBoatButton"
-                    Content="Add Boat"
-                    Width="90"
-                    Margin="5"
-                    Click="AddBoatButton_Click"/>
-
-                <Button x:Name="AddAmphibiousButton"
-                    Content="Add Amphibious"
-                    Width="120"
-                    Margin="5"
-                    Click="AddAmphibiousButton_Click"/>
-
-            </WrapPanel>
-
-            <WrapPanel Margin="0,5">
+            <WrapPanel Margin="0,0,0,15">
 
                 <Button x:Name="DriveButton"
                     Content="Drive"
-                    Width="90"
+                    Width="80"
+                    Height="35"
                     Margin="5"
                     Click="DriveButton_Click"/>
 
                 <Button x:Name="SwimButton"
                     Content="Swim"
-                    Width="90"
+                    Width="80"
+                    Height="35"
                     Margin="5"
                     Click="SwimButton_Click"/>
 
                 <Button x:Name="DeleteButton"
                     Content="Delete"
-                    Width="90"
+                    Width="80"
+                    Height="35"
                     Margin="5"
+                    Background="Tomato"
+                    Foreground="White"
+                    FontWeight="Bold"
                     Click="DeleteButton_Click"/>
-
-
 
             </WrapPanel>
 
@@ -87,8 +112,9 @@
                    Margin="0,10,0,5"/>
 
             <ListBox x:Name="LogListBox"
-                 Height="150"/>
+                 Height="220"/>
 
         </StackPanel>
+
     </Grid>
 </Window>
